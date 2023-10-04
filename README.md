@@ -13,6 +13,15 @@ To use this app, you'll need to:
 5. On the `.env` file, replace the _\<insert-your-webhook-url-here\>_ text with your Webhook URL.
 6. Run the application by executing `go run main`.
 
+If you use the `--cron` parameter when running the application (e.g. `go run main --cron`) then the messages will only be send when some threshold are meet:
+
+* Jokes will only be send if the previous jokes was sent more than a day ago.
+* Bitcoin prices will only be send if either the previous price was sent more than a day ago or if the price changed more than a 10% compared to the previous time. 
+
+This feature is useful if you want to configure a Cron job to execute the application periodically.
+
+> Threshold values can be configured using the `.env` file.
+
 ## Dependencies
 
 Jokes are fetched from [JokeAPI](https://sv443.net/jokeapi/v2/) while Bitcoin prices are obtained from [Coinbase](https://docs.cloud.coinbase.com/exchange/).

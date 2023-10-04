@@ -3,7 +3,6 @@ package util
 import (
   "bytes"
   "encoding/json"
-  "fmt"
   "net/http"
 )
 
@@ -12,10 +11,7 @@ type SlackMessage struct {
 }
 
 func PostMessageOnSlack(webhookUrl string, message string) error {
-  fmt.Println("HTTP JSON POST URL:", webhookUrl)
-
-  data := &SlackMessage{
-      Text: message}
+  data := &SlackMessage{Text: message}
   jsonData, _ := json.Marshal(data)
   byteData := []byte(string(jsonData))
 
